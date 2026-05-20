@@ -388,6 +388,88 @@
         </div>
       </section>
 
+      <!-- ───────────── §03 CRAIK ───────────── -->
+      <section class="product-feature product-feature--reverse" id="craik" aria-labelledby="craik-title">
+        <div class="product-feature__copy">
+          <header class="product-feature__head">
+            <p class="eyebrow"><span class="eyebrow__num">03</span> Craik</p>
+            <h2 id="craik-title">The Agent Operating <em>Layer.</em></h2>
+          </header>
+          <p class="product-feature__lede">
+            Shared project state, policy-bound authority, durable receipts,
+            and handoffs the next agent can trust. Runner-neutral: Codex,
+            Claude, Gemini, direct OpenAI &amp; Anthropic, OAI-compatible
+            locals.
+          </p>
+          <ul class="product-feature__features" role="list">
+            <li>Case files &amp; shared project memory</li>
+            <li>Receipted authority &amp; policy envelopes</li>
+            <li>Durable, machine-readable handoffs</li>
+            <li>One governance model across runners</li>
+          </ul>
+          <div class="product-feature__actions">
+            <a class="button button--primary" href="https://craik.eidetic-labs.com">
+              Visit craik.eidetic-labs.com
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <code class="install-snippet" aria-label="Install command">
+              <span class="install-snippet__prompt">$</span>
+              <span class="install-snippet__cmd">pip install craik</span>
+              <button type="button" class="install-snippet__copy" data-copy="pip install craik" aria-label="Copy install command">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              </button>
+            </code>
+          </div>
+          <p class="product-feature__status">governed MVP · 0.1.x · MIT</p>
+        </div>
+
+        <figure class="product-feature__stage" aria-label="The Craik mark — agent operating layer">
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="craik-svg-title">
+            <title id="craik-svg-title">Craik mark: open arc with a lavender dot and orbiting nodes</title>
+            <defs>
+              <radialGradient id="craik-halo" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="#B4ACE6" stop-opacity="0.50" />
+                <stop offset="55%" stop-color="#B4ACE6" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="#B4ACE6" stop-opacity="0" />
+              </radialGradient>
+              <pattern id="craik-dotgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--ink-soft)" fill-opacity="0.18" />
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#craik-dotgrid)" opacity="0.55" />
+            <circle cx="200" cy="200" r="170" class="craik-mark__halo" />
+            <circle cx="200" cy="200" r="155" class="craik-mark__orbit craik-mark__orbit--1" />
+
+            <!-- The C arc + lavender center dot -->
+            <g transform="translate(200 200)">
+              <path d="M 60 -25 A 65 65 0 1 0 60 25" class="craik-mark__arc" />
+              <circle cx="0" cy="0" r="20" class="craik-mark__dot craik-mark__pulse" />
+            </g>
+
+            <!-- Orbital node chips -->
+            <g class="craik-mark__node" font-family="var(--font-mono)" font-size="10">
+              <g transform="translate(80 90)">
+                <rect x="-34" y="-13" width="68" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">CASE_FILE</text>
+              </g>
+              <g transform="translate(330 200)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">POLICY</text>
+              </g>
+              <g transform="translate(80 310)">
+                <rect x="-30" y="-13" width="60" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">RECEIPT</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
       <!-- ───────────── PRINCIPLES ───────────── -->
       <section class="section principles" id="principles" aria-labelledby="principles-title">
         <header class="section__head section__head--split">
