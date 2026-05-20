@@ -3,3 +3,6 @@
 .idea/
 node_modules/
 *.log
+
+# Superpowers (brainstorming visual-companion session artifacts)
+.superpowers/

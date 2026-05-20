@@ -49,9 +49,11 @@
 
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#premise"><span aria-hidden="true">§01</span> Premise</a>
-        <a href="#products"><span aria-hidden="true">§02</span> Products</a>
-        <a href="#principles"><span aria-hidden="true">§03</span> Principles</a>
-        <a href="#lab"><span aria-hidden="true">§04</span> The lab</a>
+        <a href="#stigmem"><span aria-hidden="true">§02</span> Stigmem</a>
+        <a href="#craik"><span aria-hidden="true">§03</span> Craik</a>
+        <a href="#composition"><span aria-hidden="true">§04</span> Composition</a>
+        <a href="#principles"><span aria-hidden="true">§05</span> Principles</a>
+        <a href="#lab"><span aria-hidden="true">§06</span> The lab</a>
       </nav>
 
       <div class="header-controls">
@@ -97,17 +99,23 @@
             </span>
           </h1>
           <p class="hero__lede">
-            <strong>Eidetic</strong> — recalled with photographic clarity. We build the substrate
-            that lets coding agents remember, justify, coordinate, and hand off work across
-            sessions, runners, and reviewers. The result is software work that survives
-            its own run.
+            <strong>Eidetic</strong> — recalled with photographic clarity. We build two
+            pieces of the agent stack: <strong>Stigmem</strong>, a federated memory fabric,
+            and <strong>Craik</strong>, a governed agent runtime. Each stands alone.
+            Together, they compose.
           </p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#products">
+            <a class="button button--primary" href="#stigmem">
               See what we build
               <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
                 <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a class="button button--ghost" href="https://stigmem.dev">
+              Visit Stigmem
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
             <a class="button button--ghost" href="https://craik.eidetic-labs.com">
@@ -125,7 +133,7 @@
             </div>
             <div>
               <dt>Focus</dt>
-              <dd>Agent runtime · governance</dd>
+              <dd>Stigmem · Craik</dd>
             </div>
             <div>
               <dt>Status</dt>
@@ -218,7 +226,7 @@
               <g transform="translate(532 548)" class="mark-label">
                 <rect x="-58" y="-16" width="116" height="32" rx="6" />
                 <text y="-1" text-anchor="middle"><tspan class="mark-label__t">RUNTIME</tspan></text>
-                <text y="11" text-anchor="middle" class="mark-label__h">case file</text>
+                <text y="11" text-anchor="middle" class="mark-label__h">craik · case files</text>
               </g>
               <!-- Faint connector lines from labels toward the mark center -->
               <g stroke="var(--rule-strong)" stroke-width="1" stroke-dasharray="2 4" opacity="0.6" fill="none">
@@ -264,148 +272,247 @@
               <span class="premise__verb">dispute</span>, and
               <span class="premise__verb">hand off</span> its work — across sessions,
               tools, runners, and the humans who review it. Eidetic Labs builds that
-              substrate.
+              substrate as two composable pieces: <strong>Stigmem</strong> for the
+              memory, <strong>Craik</strong> for the run.
             </p>
           </div>
         </div>
 
-        <ol class="premise__ledger" aria-label="The failure modes we work on">
+        <ol class="premise__ledger" aria-label="The asymmetric decay we work on">
           <li>
             <span class="premise__ledger-num">01</span>
-            <span class="premise__ledger-from">Sessions end</span>
+            <span class="premise__ledger-from">Models advance</span>
             <span class="premise__ledger-arrow" aria-hidden="true">→</span>
-            <span class="premise__ledger-to">Context dies.</span>
+            <span class="premise__ledger-to">Memory regresses.</span>
           </li>
           <li>
             <span class="premise__ledger-num">02</span>
-            <span class="premise__ledger-from">Tools fire</span>
+            <span class="premise__ledger-from">Tools multiply</span>
             <span class="premise__ledger-arrow" aria-hidden="true">→</span>
-            <span class="premise__ledger-to">Authority drifts.</span>
+            <span class="premise__ledger-to">Trust thins.</span>
           </li>
           <li>
             <span class="premise__ledger-num">03</span>
-            <span class="premise__ledger-from">Memory is mocked</span>
+            <span class="premise__ledger-from">Agents proliferate</span>
             <span class="premise__ledger-arrow" aria-hidden="true">→</span>
-            <span class="premise__ledger-to">Truth degrades.</span>
+            <span class="premise__ledger-to">Handoffs vanish.</span>
           </li>
           <li>
             <span class="premise__ledger-num">04</span>
-            <span class="premise__ledger-from">Runs finish</span>
+            <span class="premise__ledger-from">Runs complete</span>
             <span class="premise__ledger-arrow" aria-hidden="true">→</span>
-            <span class="premise__ledger-to">Evidence is lost.</span>
+            <span class="premise__ledger-to">Evidence dissolves.</span>
           </li>
         </ol>
       </section>
 
-      <!-- ───────────── PRODUCTS ───────────── -->
-      <section class="section products" id="products" aria-labelledby="products-title">
-        <header class="section__head">
-          <p class="eyebrow"><span class="eyebrow__num">02</span> Products</p>
-          <h2 id="products-title">
-            What we build, <em>shipped in layers.</em>
-          </h2>
-          <p class="section__sub">
-            Eidetic Labs ships a small, opinionated stack. Each layer is independently
-            usable, but the layers compose: memory under runtime, runtime under governance,
-            governance under handoff.
+      <!-- ───────────── §02 STIGMEM ───────────── -->
+      <section class="product-feature" id="stigmem" aria-labelledby="stigmem-title">
+        <figure class="product-feature__stage" aria-label="The Stigmem mark — federated memory fabric">
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="stigmem-svg-title">
+            <title id="stigmem-svg-title">Stigmem mark: lavender disc with orbiting fact tokens</title>
+            <defs>
+              <radialGradient id="stigmem-halo" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="var(--lavender)" stop-opacity="0.55" />
+                <stop offset="55%" stop-color="var(--lavender)" stop-opacity="0.10" />
+                <stop offset="100%" stop-color="var(--lavender)" stop-opacity="0" />
+              </radialGradient>
+              <pattern id="stigmem-dotgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--ink-soft)" fill-opacity="0.18" />
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#stigmem-dotgrid)" opacity="0.55" />
+            <circle cx="200" cy="200" r="170" class="stigmem-mark__halo" />
+            <circle cx="200" cy="200" r="155" class="stigmem-mark__orbit stigmem-mark__orbit--1" />
+            <circle cx="200" cy="200" r="115" class="stigmem-mark__orbit stigmem-mark__orbit--2" />
+
+            <!-- The disc itself — Stigmem's geometric mark -->
+            <circle cx="200" cy="200" r="64" class="stigmem-mark__disc stigmem-mark__pulse" />
+
+            <!-- Orbiting fact tokens -->
+            <g class="stigmem-mark__token" font-family="var(--font-mono)" font-size="10">
+              <g transform="translate(72 120)">
+                <rect x="-32" y="-13" width="64" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">ENTITY</text>
+              </g>
+              <g transform="translate(328 120)">
+                <rect x="-34" y="-13" width="68" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">RELATION</text>
+              </g>
+              <g transform="translate(328 280)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">VALUE</text>
+              </g>
+              <g transform="translate(72 280)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">SCOPE</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+
+        <div class="product-feature__copy">
+          <header class="product-feature__head">
+            <p class="eyebrow"><span class="eyebrow__num">02</span> Stigmem</p>
+            <h2 id="stigmem-title">The Federated Knowledge <em>Fabric.</em></h2>
+          </header>
+          <p class="product-feature__lede">
+            A shared memory layer for AI agents. Typed, provenance-tagged
+            facts that travel across tools, platforms, and organizations.
           </p>
+          <ul class="product-feature__features" role="list">
+            <li>Typed facts with provenance and scope</li>
+            <li>Federation under signed handshakes</li>
+            <li>Contradictions surfaced, not overwritten</li>
+            <li>Open spec + reference implementation</li>
+          </ul>
+          <div class="product-feature__actions">
+            <a class="button button--primary" href="https://stigmem.dev">
+              Visit stigmem.dev
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <code class="install-snippet" aria-label="Install command">
+              <span class="install-snippet__prompt">$</span>
+              <span class="install-snippet__cmd">pip install stigmem</span>
+              <button type="button" class="install-snippet__copy" data-copy="pip install stigmem" aria-label="Copy install command">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              </button>
+            </code>
+          </div>
+          <p class="product-feature__status">preview alpha · v0.9.0a2 · Apache-2.0</p>
+        </div>
+      </section>
+
+      <!-- ───────────── §03 CRAIK ───────────── -->
+      <section class="product-feature product-feature--reverse" id="craik" aria-labelledby="craik-title">
+        <div class="product-feature__copy">
+          <header class="product-feature__head">
+            <p class="eyebrow"><span class="eyebrow__num">03</span> Craik</p>
+            <h2 id="craik-title">The Agent Operating <em>Layer.</em></h2>
+          </header>
+          <p class="product-feature__lede">
+            Shared project state, policy-bound authority, durable receipts,
+            and handoffs the next agent can trust. Runner-neutral: Codex,
+            Claude, Gemini, direct OpenAI &amp; Anthropic, OAI-compatible
+            locals.
+          </p>
+          <ul class="product-feature__features" role="list">
+            <li>Case files &amp; shared project memory</li>
+            <li>Receipted authority &amp; policy envelopes</li>
+            <li>Durable, machine-readable handoffs</li>
+            <li>One governance model across runners</li>
+          </ul>
+          <div class="product-feature__actions">
+            <a class="button button--primary" href="https://craik.eidetic-labs.com">
+              Visit craik.eidetic-labs.com
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <code class="install-snippet" aria-label="Install command">
+              <span class="install-snippet__prompt">$</span>
+              <span class="install-snippet__cmd">pip install craik</span>
+              <button type="button" class="install-snippet__copy" data-copy="pip install craik" aria-label="Copy install command">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              </button>
+            </code>
+          </div>
+          <p class="product-feature__status">governed MVP · 0.1.x · MIT</p>
+        </div>
+
+        <figure class="product-feature__stage" aria-label="The Craik mark — agent operating layer">
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="craik-svg-title">
+            <title id="craik-svg-title">Craik mark: open arc with a lavender dot and orbiting nodes</title>
+            <defs>
+              <radialGradient id="craik-halo" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="var(--lavender)" stop-opacity="0.50" />
+                <stop offset="55%" stop-color="var(--lavender)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--lavender)" stop-opacity="0" />
+              </radialGradient>
+              <pattern id="craik-dotgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--ink-soft)" fill-opacity="0.18" />
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#craik-dotgrid)" opacity="0.55" />
+            <circle cx="200" cy="200" r="170" class="craik-mark__halo" />
+            <circle cx="200" cy="200" r="155" class="craik-mark__orbit craik-mark__orbit--1" />
+
+            <!-- The C arc + lavender center dot -->
+            <g transform="translate(200 200)">
+              <path d="M 60 -25 A 65 65 0 1 0 60 25" class="craik-mark__arc" />
+              <circle cx="0" cy="0" r="20" class="craik-mark__dot craik-mark__pulse" />
+            </g>
+
+            <!-- Orbital node chips -->
+            <g class="craik-mark__node" font-family="var(--font-mono)" font-size="10">
+              <g transform="translate(80 90)">
+                <rect x="-34" y="-13" width="68" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">CASE_FILE</text>
+              </g>
+              <g transform="translate(330 200)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">POLICY</text>
+              </g>
+              <g transform="translate(80 310)">
+                <rect x="-30" y="-13" width="60" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="n-label">RECEIPT</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
+      <!-- ───────────── §04 COMPOSITION ───────────── -->
+      <section class="section composition" id="composition" aria-labelledby="composition-title">
+        <header class="section__head section__head--center composition__head">
+          <p class="eyebrow"><span class="eyebrow__num">04</span> Composition</p>
+          <h2 id="composition-title">One fact. <em>Two products.</em></h2>
         </header>
 
-        <article class="product product--flagship" aria-label="Craik — flagship product">
-          <div class="product__meta">
-            <span class="product__tag">Flagship · 0.1.x</span>
-            <span class="product__pulse"><span class="pulse"></span>Active development</span>
-          </div>
-          <div class="product__body">
-            <div class="product__head">
-              <span class="product__mark" aria-hidden="true">
-                <svg viewBox="-40 -40 80 80" width="44" height="44">
-                  <path
-                    d="M 29.564 -12.246 A 32 32 0 1 0 29.564 12.246"
-                    fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"
-                  />
-                  <circle cx="0" cy="0" r="18" fill="#B4ACE6" />
-                </svg>
-              </span>
-              <div>
-                <h3>Craik</h3>
-                <p class="product__sub">The agent operating layer.</p>
-              </div>
-            </div>
-            <p class="product__lede">
-              Shared project state, policy-bound authority, durable receipts, and
-              handoffs the next agent can trust. Runner-neutral: Codex, Claude, Gemini,
-              direct OpenAI &amp; Anthropic, OAI-compatible locals.
-            </p>
-            <ul class="product__features" role="list">
-              <li><span aria-hidden="true">◦</span> Case files &amp; shared project memory</li>
-              <li><span aria-hidden="true">◦</span> Receipted authority &amp; policy envelopes</li>
-              <li><span aria-hidden="true">◦</span> Durable, machine-readable handoffs</li>
-              <li><span aria-hidden="true">◦</span> One governance model across runners</li>
-            </ul>
-            <div class="product__actions">
-              <a class="button button--primary" href="https://craik.eidetic-labs.com">
-                Visit craik.eidetic-labs.com
-                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-                  <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-              <code class="install-snippet" aria-label="Install command">
-                <span class="install-snippet__prompt">$</span>
-                <span class="install-snippet__cmd">pip install craik</span>
-                <button type="button" class="install-snippet__copy" data-copy="pip install craik" aria-label="Copy install command">
-                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-                    <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
-                    <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
-                  </svg>
-                </button>
-              </code>
-            </div>
+        <p class="composition__framing">
+          Stigmem holds the truth. Craik governs the act. The interface is small
+          and explicit: Craik reads facts as evidence, writes receipts back as
+          facts, and surfaces contradictions to the inbox they share.
+        </p>
+
+        <article class="terminal composition__terminal" aria-label="One fact moving through Stigmem and Craik">
+          <header class="terminal__chrome">
+            <span class="terminal__dot terminal__dot--r"></span>
+            <span class="terminal__dot terminal__dot--y"></span>
+            <span class="terminal__dot terminal__dot--g"></span>
+            <span class="terminal__path">~/repos/product · main</span>
+          </header>
+          <div class="terminal__body">
+            <p><span class="prompt">$</span> stigmem assert <span class="terminal__arg">migration_0042.row_count</span> = 12M</p>
+            <p class="comment">→ fact_8a · signed · scope=team-dba</p>
+            <p><span class="prompt">$</span> craik case build <span class="terminal__arg">task_042</span></p>
+            <p class="comment">→ pulls fact_8a · 12 evidence refs</p>
+            <p><span class="prompt">$</span> craik run <span class="terminal__arg">task_042</span> --policy strict.write</p>
+            <p class="comment">→ <span class="mark-r">contradiction</span>: stigmem fact_91 differs</p>
+            <p class="comment">→ surfaced to <span class="mark-l">reviewer:@dba</span></p>
           </div>
         </article>
 
-        <div class="product-row">
-          <article class="product product--small" aria-label="Stigmem — memory layer">
-            <div class="product__meta">
-              <span class="product__tag">Component · alpha</span>
-            </div>
-            <h3>Stigmem</h3>
-            <p class="product__sub">Scope-aware memory for agent work.</p>
-            <p>
-              A fact store with proposals, contradictions, and scope boundaries. The
-              memory that sits under Craik so agents don't silently overwrite each
-              other's truth.
-            </p>
-            <p class="product__link">
-              <span class="product__link-label">Embedded in Craik</span>
-              <span class="product__link-arrow" aria-hidden="true">→</span>
-            </p>
-          </article>
-
-          <article class="product product--small product--upcoming" aria-label="Forthcoming work">
-            <div class="product__meta">
-              <span class="product__tag product__tag--muted">In the lab</span>
-            </div>
-            <h3>What's next</h3>
-            <p class="product__sub">Operator identity &amp; credential runtime.</p>
-            <p>
-              OIDC operator identity, credential pools with rotation and failover, RFC
-              8693 token exchange, and review gates — every provider call bound to both
-              operator and credential, named on every receipt.
-            </p>
-            <p class="product__link">
-              <span class="product__link-label">Roadmap forthcoming</span>
-              <span class="product__link-arrow" aria-hidden="true">↗</span>
-            </p>
-          </article>
-        </div>
+        <p class="composition__resolution">
+          Adopt Stigmem alone for cross-platform memory. Adopt Craik alone in
+          its degraded local mode. Adopt both for the full loop — the seams
+          are documented, the contracts are typed.
+        </p>
       </section>
 
       <!-- ───────────── PRINCIPLES ───────────── -->
       <section class="section principles" id="principles" aria-labelledby="principles-title">
         <header class="section__head section__head--split">
           <div>
-            <p class="eyebrow"><span class="eyebrow__num">03</span> Principles</p>
+            <p class="eyebrow"><span class="eyebrow__num">05</span> Principles</p>
             <h2 id="principles-title">
               How we <em>build.</em>
             </h2>
@@ -474,7 +581,7 @@
       <section class="section lab" id="lab" aria-labelledby="lab-title">
         <div class="lab__inner">
           <div class="lab__copy">
-            <p class="eyebrow"><span class="eyebrow__num">04</span> The lab</p>
+            <p class="eyebrow"><span class="eyebrow__num">06</span> The lab</p>
             <h2 id="lab-title">
               A small studio, <em>building one stack carefully.</em>
             </h2>
@@ -540,7 +647,7 @@
           <div>
             <p class="site-footer__group">Products</p>
             <a href="https://craik.eidetic-labs.com">Craik</a>
-            <a href="#products">Stigmem</a>
+            <a href="https://stigmem.dev">Stigmem</a>
           </div>
           <div>
             <p class="site-footer__group">Lab</p>
