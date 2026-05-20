@@ -470,6 +470,44 @@
         </figure>
       </section>
 
+      <!-- ───────────── §04 COMPOSITION ───────────── -->
+      <section class="section composition" id="composition" aria-labelledby="composition-title">
+        <header class="section__head section__head--center composition__head">
+          <p class="eyebrow"><span class="eyebrow__num">04</span> Composition</p>
+          <h2 id="composition-title">One fact. <em>Two products.</em></h2>
+        </header>
+
+        <p class="composition__framing">
+          Stigmem holds the truth. Craik governs the act. The interface is small
+          and explicit: Craik reads facts as evidence, writes receipts back as
+          facts, and surfaces contradictions to the inbox they share.
+        </p>
+
+        <article class="terminal composition__terminal" aria-label="One fact moving through Stigmem and Craik">
+          <header class="terminal__chrome">
+            <span class="terminal__dot terminal__dot--r"></span>
+            <span class="terminal__dot terminal__dot--y"></span>
+            <span class="terminal__dot terminal__dot--g"></span>
+            <span class="terminal__path">~/repos/product · main</span>
+          </header>
+          <div class="terminal__body">
+            <p><span class="prompt">$</span> stigmem assert <span class="install-snippet__cmd">migration_0042.row_count</span> = 12M</p>
+            <p class="comment">→ fact_8a · signed · scope=team-dba</p>
+            <p><span class="prompt">$</span> craik case build <span class="install-snippet__cmd">task_042</span></p>
+            <p class="comment">→ pulls fact_8a · 12 evidence refs</p>
+            <p><span class="prompt">$</span> craik run <span class="install-snippet__cmd">task_042</span> --policy strict.write</p>
+            <p class="comment">→ <span class="mark-r">contradiction</span>: stigmem fact_91 differs</p>
+            <p class="comment">→ surfaced to <span class="mark-l">reviewer:@dba</span></p>
+          </div>
+        </article>
+
+        <p class="composition__resolution">
+          Adopt Stigmem alone for cross-platform memory. Adopt Craik alone in
+          its degraded local mode. Adopt both for the full loop — the seams
+          are documented, the contracts are typed.
+        </p>
+      </section>
+
       <!-- ───────────── PRINCIPLES ───────────── -->
       <section class="section principles" id="principles" aria-labelledby="principles-title">
         <header class="section__head section__head--split">
