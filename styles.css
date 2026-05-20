@@ -778,164 +778,6 @@ html[data-theme='dark'] .premise__quote-mark {
   max-width: 56ch;
 }
 
-/* ───────── Products ───────── */
-.products { padding-bottom: clamp(64px, 8vw, 112px); }
-
-.product {
-  background: var(--bg);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
-  position: relative;
-  transition: border-color 240ms var(--ease), background 240ms var(--ease);
-  overflow: hidden;
-}
-.product:hover { border-color: var(--rule-strong); }
-
-.product--flagship {
-  display: grid;
-  gap: 0;
-  grid-template-columns: 220px minmax(0, 1fr);
-  margin-bottom: 24px;
-}
-.product__meta {
-  align-items: flex-start;
-  background: var(--bg-sunk);
-  border-right: 1px solid var(--rule);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  gap: 12px;
-  letter-spacing: 0.08em;
-  padding: clamp(24px, 2.4vw, 36px);
-  text-transform: uppercase;
-}
-.product__tag {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  border-radius: 4px;
-  color: var(--accent);
-  padding: 4px 8px;
-}
-.product__tag--muted {
-  background: var(--bg-elevated);
-  color: var(--fg-mute);
-}
-.product__pulse {
-  align-items: center;
-  color: var(--fg-dim);
-  display: inline-flex;
-  font-size: 0.7rem;
-  gap: 2px;
-  letter-spacing: 0.04em;
-  text-transform: none;
-}
-.product__body { padding: clamp(24px, 2.4vw, 36px); }
-
-.product__head {
-  align-items: center;
-  display: flex;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-.product__mark { color: var(--fg); }
-.product--flagship h3 {
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
-  margin: 0;
-}
-.product__sub {
-  color: var(--fg-dim);
-  font-size: 1.02rem;
-  font-weight: 400;
-  margin-top: 4px;
-}
-.product__lede {
-  color: var(--fg-dim);
-  font-size: 1.02rem;
-  line-height: 1.7;
-  max-width: 58ch;
-  margin-bottom: 22px;
-}
-.product__features {
-  border-top: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px 24px;
-  list-style: none;
-  margin: 0 0 24px;
-  padding: 22px 0 0;
-}
-.product__features li {
-  align-items: center;
-  color: var(--fg);
-  display: flex;
-  font-size: 0.92rem;
-  gap: 10px;
-}
-.product__features li span {
-  color: var(--accent);
-  font-weight: 700;
-}
-.product__actions {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.product-row {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.product--small {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: clamp(24px, 2.4vw, 32px);
-}
-.product--small .product__meta {
-  background: transparent;
-  border: none;
-  flex-direction: row;
-  padding: 0;
-}
-.product--small h3 {
-  font-size: 1.4rem;
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  margin: 0;
-}
-.product--small .product__sub {
-  font-size: 0.94rem;
-  margin: 0 0 8px;
-}
-.product--small p {
-  color: var(--fg-dim);
-  font-size: 0.96rem;
-  line-height: 1.65;
-}
-.product--upcoming { background: var(--bg-sunk); }
-.product__link {
-  align-items: center;
-  color: var(--fg);
-  display: inline-flex;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  gap: 8px;
-  letter-spacing: 0.08em;
-  margin-top: auto;
-  padding-top: 16px;
-  text-transform: uppercase;
-}
-.product__link-arrow {
-  color: var(--accent);
-  transition: transform 220ms var(--ease);
-}
-.product:hover .product__link-arrow { transform: translateX(4px); }
-
 /* ───────── Principles ───────── */
 .principle-grid {
   display: grid;
@@ -1324,8 +1166,6 @@ html[data-theme='dark'] .terminal {
   }
   .hero__stage { justify-self: center; max-width: 520px; }
   .lab__inner { grid-template-columns: minmax(0, 1fr); }
-  .product--flagship { grid-template-columns: minmax(0, 1fr); }
-  .product__meta { border-right: none; border-bottom: 1px solid var(--rule); flex-direction: row; }
   .principle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -1352,8 +1192,6 @@ html[data-theme='dark'] .terminal {
   .premise__ledger-arrow { display: none; }
   .premise__ledger-to { grid-area: to; }
 
-  .product-row { grid-template-columns: minmax(0, 1fr); }
-  .product__features { grid-template-columns: minmax(0, 1fr); }
   .principle-grid { grid-template-columns: minmax(0, 1fr); }
 
   .site-footer__inner { grid-template-columns: minmax(0, 1fr); }
