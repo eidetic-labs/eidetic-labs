@@ -559,6 +559,10 @@ html[data-theme='dark'] .mark-svg {
   50%      { transform: scale(1.5); opacity: 0.6; }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .mark-svg__labels .mark-label rect {
   fill: var(--bg);
   stroke: var(--rule-strong);
@@ -1192,7 +1196,7 @@ html[data-theme='dark'] .product-feature__stage svg {
 }
 
 /* Stigmem visual: lavender disc + faint orbit dots */
-.stigmem-mark__disc { fill: #B4ACE6; }
+.stigmem-mark__disc { fill: var(--lavender); }
 .stigmem-mark__halo  { fill: url(#stigmem-halo); }
 .stigmem-mark__orbit { fill: none; stroke: var(--accent); stroke-opacity: 0.18; stroke-dasharray: 2 6; transform-origin: 200px 200px; }
 .stigmem-mark__orbit--1 { animation: spin 80s linear infinite; }
@@ -1208,7 +1212,7 @@ html[data-theme='dark'] .product-feature__stage svg {
 
 /* Craik visual: open C arc + lavender dot + orbital node chips */
 .craik-mark__arc  { fill: none; stroke: var(--mark-fill); stroke-width: 22; stroke-linecap: round; }
-.craik-mark__dot  { fill: #B4ACE6; }
+.craik-mark__dot  { fill: var(--lavender); }
 .craik-mark__halo { fill: url(#craik-halo); }
 .craik-mark__orbit { fill: none; stroke: var(--accent); stroke-opacity: 0.18; stroke-dasharray: 2 6; transform-origin: 200px 200px; }
 .craik-mark__orbit--1 { animation: spin 110s linear infinite; }
