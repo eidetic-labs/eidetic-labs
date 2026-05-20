@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eidetic Labs · Memory and governance for agent work</title>
+    <meta
+      name="description"
+      content="Eidetic Labs builds the substrate that lets AI agents remember, justify, coordinate, and hand off work. Home of Craik, the agent operating layer."
+    />
+    <meta property="og:title" content="Eidetic Labs — Memory and governance for agent work" />
+    <meta
+      property="og:description"
+      content="The substrate AI agents work on. Shared project state, policy-bound authority, durable receipts, and machine-readable handoffs."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eidetic-labs.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/assets/favicons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/styles.css?v=launch-1" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem('eidetic-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = saved || (systemDark ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Eidetic Labs home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="-44 -44 88 88" width="30" height="30">
+            <rect x="-40" y="-40" width="80" height="16" rx="8" ry="8" fill="currentColor" class="brand__bar brand__bar--top" />
+            <rect x="-40" y="-8" width="56" height="16" rx="8" ry="8" fill="#B4ACE6" class="brand__bar brand__bar--mid" />
+            <rect x="-40" y="24" width="80" height="16" rx="8" ry="8" fill="currentColor" class="brand__bar brand__bar--bot" />
+          </svg>
+        </span>
+        <span class="brand__wordmark">Eidetic Labs</span>
+        <span class="brand__by">/ˌaɪˈdɛt·ɪk/</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#premise"><span aria-hidden="true">§01</span> Premise</a>
+        <a href="#products"><span aria-hidden="true">§02</span> Products</a>
+        <a href="#principles"><span aria-hidden="true">§03</span> Principles</a>
+        <a href="#lab"><span aria-hidden="true">§04</span> The lab</a>
+      </nav>
+
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+              <path d="M12 2.6v2.4" /><path d="M12 19v2.4" />
+              <path d="M2.6 12h2.4" /><path d="M19 12h2.4" />
+              <path d="M5.2 5.2l1.7 1.7" /><path d="M17.1 17.1l1.7 1.7" />
+              <path d="M5.2 18.8l1.7-1.7" /><path d="M17.1 6.9l1.7-1.7" />
+            </g>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" />
+          </svg>
+        </button>
+        <a class="header-action" href="https://github.com/eidetic-labs">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.28-5.24-5.71 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.95 10.95 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.07.78 2.16v3.2c0 .31.21.68.8.56 4.57-1.52 7.86-5.83 7.86-10.91C23.5 5.65 18.35.5 12 .5z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ───────────── HERO ───────────── -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__grid" aria-hidden="true"></div>
+
+        <div class="hero__copy">
+          <p class="eyebrow">
+            <span class="eyebrow__dot"></span>
+            Eidetic Labs · Infrastructure for agent work
+          </p>
+          <h1 id="hero-title">
+            <span class="hero__line hero__line--a">Memory and</span>
+            <span class="hero__line hero__line--b">governance for</span>
+            <span class="hero__line hero__line--c">
+              agent <em>work</em>.
+            </span>
+          </h1>
+          <p class="hero__lede">
+            <strong>Eidetic</strong> — recalled with photographic clarity. We build the substrate
+            that lets coding agents remember, justify, coordinate, and hand off work across
+            sessions, runners, and reviewers. The result is software work that survives
+            its own run.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#products">
+              See what we build
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a class="button button--ghost" href="https://craik.eidetic-labs.com">
+              Visit Craik
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+
+          <dl class="hero__stats">
+            <div>
+              <dt>Founded</dt>
+              <dd>2025</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Agent runtime · governance</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd><span class="pulse"></span>Building in the open</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Hero stage: the Eidetic E-mark, treated as the signature visual -->
+        <figure class="hero__stage" aria-label="The Eidetic Labs mark — three layered bars of memory">
+          <svg
+            class="mark-svg"
+            viewBox="0 0 640 640"
+            role="img"
+            aria-labelledby="mark-svg-title"
+          >
+            <title id="mark-svg-title">
+              The Eidetic Labs mark: three rounded bars, layered memory, lavender at the core
+            </title>
+            <defs>
+              <radialGradient id="mark-halo" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="var(--lavender)" stop-opacity="0.5" />
+                <stop offset="55%" stop-color="var(--lavender)" stop-opacity="0.08" />
+                <stop offset="100%" stop-color="var(--lavender)" stop-opacity="0" />
+              </radialGradient>
+              <pattern id="mark-dotgrid" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--ink-soft)" fill-opacity="0.18" />
+              </pattern>
+              <linearGradient id="mark-trace" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="var(--lavender-deep)" stop-opacity="0" />
+                <stop offset="50%" stop-color="var(--lavender-deep)" stop-opacity="0.9" />
+                <stop offset="100%" stop-color="var(--lavender-deep)" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="640" height="640" fill="url(#mark-dotgrid)" opacity="0.55" />
+            <circle cx="320" cy="320" r="260" fill="url(#mark-halo)" />
+
+            <!-- Faint horizontal scan lines that hint at "layers of memory" -->
+            <g class="mark-svg__scans" stroke="var(--accent)" stroke-opacity="0.10" stroke-width="1">
+              <line x1="40" y1="160" x2="600" y2="160" />
+              <line x1="40" y1="220" x2="600" y2="220" />
+              <line x1="40" y1="280" x2="600" y2="280" />
+              <line x1="40" y1="340" x2="600" y2="340" />
+              <line x1="40" y1="400" x2="600" y2="400" />
+              <line x1="40" y1="460" x2="600" y2="460" />
+            </g>
+
+            <!-- Traveling pulse on the middle (lavender) bar's row -->
+            <line class="mark-svg__trace" x1="40" y1="320" x2="600" y2="320"
+                  stroke="url(#mark-trace)" stroke-width="2" />
+
+            <!-- The Eidetic E-mark, scaled and centered (drawn at native -40..40) -->
+            <g transform="translate(320 320) scale(4.4)">
+              <!-- Top bar -->
+              <rect class="mark-bar mark-bar--top"
+                    x="-40" y="-40" width="80" height="16" rx="8" ry="8"
+                    fill="var(--mark-fill)" />
+              <!-- Middle bar — the brand accent -->
+              <rect class="mark-bar mark-bar--mid"
+                    x="-40" y="-8" width="56" height="16" rx="8" ry="8"
+                    fill="#B4ACE6" />
+              <!-- Bottom bar -->
+              <rect class="mark-bar mark-bar--bot"
+                    x="-40" y="24" width="80" height="16" rx="8" ry="8"
+                    fill="var(--mark-fill)" />
+
+              <!-- Pulse dot at the right edge of the middle bar -->
+              <circle class="mark-pulse" cx="16" cy="0" r="3.2" fill="#7C72C7" />
+            </g>
+
+            <!-- Labels around the mark — placed clear of the bar region
+                 (top bar spans y=144..214, mid spans 285..355, bottom 425..496) -->
+            <g class="mark-svg__labels" font-family="var(--font-mono)" font-size="11">
+              <g transform="translate(108 92)" class="mark-label">
+                <rect x="-58" y="-16" width="116" height="32" rx="6" />
+                <text y="-1" text-anchor="middle"><tspan class="mark-label__t">MEMORY</tspan></text>
+                <text y="11" text-anchor="middle" class="mark-label__h">stigmem · facts</text>
+              </g>
+              <g transform="translate(532 92)" class="mark-label">
+                <rect x="-58" y="-16" width="116" height="32" rx="6" />
+                <text y="-1" text-anchor="middle"><tspan class="mark-label__t">GOVERNANCE</tspan></text>
+                <text y="11" text-anchor="middle" class="mark-label__h">policy · receipts</text>
+              </g>
+              <g transform="translate(108 548)" class="mark-label">
+                <rect x="-58" y="-16" width="116" height="32" rx="6" />
+                <text y="-1" text-anchor="middle"><tspan class="mark-label__t">HANDOFF</tspan></text>
+                <text y="11" text-anchor="middle" class="mark-label__h">next agent</text>
+              </g>
+              <g transform="translate(532 548)" class="mark-label">
+                <rect x="-58" y="-16" width="116" height="32" rx="6" />
+                <text y="-1" text-anchor="middle"><tspan class="mark-label__t">RUNTIME</tspan></text>
+                <text y="11" text-anchor="middle" class="mark-label__h">case file</text>
+              </g>
+              <!-- Faint connector lines from labels toward the mark center -->
+              <g stroke="var(--rule-strong)" stroke-width="1" stroke-dasharray="2 4" opacity="0.6" fill="none">
+                <line x1="108" y1="108" x2="160" y2="172" />
+                <line x1="532" y1="108" x2="480" y2="172" />
+                <line x1="108" y1="532" x2="160" y2="468" />
+                <line x1="532" y1="532" x2="480" y2="468" />
+              </g>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
+      <!-- ───────────── PREMISE ───────────── -->
+      <section class="premise" id="premise" aria-label="The premise behind Eidetic Labs">
+        <div class="premise__inner">
+          <aside class="premise__marker" aria-hidden="true">
+            <span class="premise__marker-dot"></span>
+            <span class="premise__marker-text">§01 · Premise</span>
+          </aside>
+
+          <div class="premise__body">
+            <p class="premise__setup">
+              Most agent platforms invest in
+              <span class="premise__chip">tool calls</span>,
+              <span class="premise__chip">prompt routing</span>,
+              <span class="premise__chip">parallel runs</span>.
+            </p>
+
+            <p class="premise__quote">
+              <span class="premise__quote-mark" aria-hidden="true">&ldquo;</span>
+              <span class="premise__quote-line">Those are necessary.</span>
+              <span class="premise__quote-line premise__quote-line--accent">
+                They are not enough.
+              </span>
+            </p>
+
+            <p class="premise__resolution">
+              An agent is useful at organizational scale only when it can
+              <span class="premise__verb">remember</span>,
+              <span class="premise__verb">justify</span>,
+              <span class="premise__verb">coordinate</span>,
+              <span class="premise__verb">dispute</span>, and
+              <span class="premise__verb">hand off</span> its work — across sessions,
+              tools, runners, and the humans who review it. Eidetic Labs builds that
+              substrate.
+            </p>
+          </div>
+        </div>
+
+        <ol class="premise__ledger" aria-label="The failure modes we work on">
+          <li>
+            <span class="premise__ledger-num">01</span>
+            <span class="premise__ledger-from">Sessions end</span>
+            <span class="premise__ledger-arrow" aria-hidden="true">→</span>
+            <span class="premise__ledger-to">Context dies.</span>
+          </li>
+          <li>
+            <span class="premise__ledger-num">02</span>
+            <span class="premise__ledger-from">Tools fire</span>
+            <span class="premise__ledger-arrow" aria-hidden="true">→</span>
+            <span class="premise__ledger-to">Authority drifts.</span>
+          </li>
+          <li>
+            <span class="premise__ledger-num">03</span>
+            <span class="premise__ledger-from">Memory is mocked</span>
+            <span class="premise__ledger-arrow" aria-hidden="true">→</span>
+            <span class="premise__ledger-to">Truth degrades.</span>
+          </li>
+          <li>
+            <span class="premise__ledger-num">04</span>
+            <span class="premise__ledger-from">Runs finish</span>
+            <span class="premise__ledger-arrow" aria-hidden="true">→</span>
+            <span class="premise__ledger-to">Evidence is lost.</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────────── PRODUCTS ───────────── -->
+      <section class="section products" id="products" aria-labelledby="products-title">
+        <header class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">02</span> Products</p>
+          <h2 id="products-title">
+            What we build, <em>shipped in layers.</em>
+          </h2>
+          <p class="section__sub">
+            Eidetic Labs ships a small, opinionated stack. Each layer is independently
+            usable, but the layers compose: memory under runtime, runtime under governance,
+            governance under handoff.
+          </p>
+        </header>
+
+        <article class="product product--flagship" aria-label="Craik — flagship product">
+          <div class="product__meta">
+            <span class="product__tag">Flagship · 0.1.x</span>
+            <span class="product__pulse"><span class="pulse"></span>Active development</span>
+          </div>
+          <div class="product__body">
+            <div class="product__head">
+              <span class="product__mark" aria-hidden="true">
+                <svg viewBox="-40 -40 80 80" width="44" height="44">
+                  <path
+                    d="M 29.564 -12.246 A 32 32 0 1 0 29.564 12.246"
+                    fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"
+                  />
+                  <circle cx="0" cy="0" r="18" fill="#B4ACE6" />
+                </svg>
+              </span>
+              <div>
+                <h3>Craik</h3>
+                <p class="product__sub">The agent operating layer.</p>
+              </div>
+            </div>
+            <p class="product__lede">
+              Shared project state, policy-bound authority, durable receipts, and
+              handoffs the next agent can trust. Runner-neutral: Codex, Claude, Gemini,
+              direct OpenAI &amp; Anthropic, OAI-compatible locals.
+            </p>
+            <ul class="product__features" role="list">
+              <li><span aria-hidden="true">◦</span> Case files &amp; shared project memory</li>
+              <li><span aria-hidden="true">◦</span> Receipted authority &amp; policy envelopes</li>
+              <li><span aria-hidden="true">◦</span> Durable, machine-readable handoffs</li>
+              <li><span aria-hidden="true">◦</span> One governance model across runners</li>
+            </ul>
+            <div class="product__actions">
+              <a class="button button--primary" href="https://craik.eidetic-labs.com">
+                Visit craik.eidetic-labs.com
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <code class="install-snippet" aria-label="Install command">
+                <span class="install-snippet__prompt">$</span>
+                <span class="install-snippet__cmd">pip install craik</span>
+                <button type="button" class="install-snippet__copy" data-copy="pip install craik" aria-label="Copy install command">
+                  <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                </button>
+              </code>
+            </div>
+          </div>
+        </article>
+
+        <div class="product-row">
+          <article class="product product--small" aria-label="Stigmem — memory layer">
+            <div class="product__meta">
+              <span class="product__tag">Component · alpha</span>
+            </div>
+            <h3>Stigmem</h3>
+            <p class="product__sub">Scope-aware memory for agent work.</p>
+            <p>
+              A fact store with proposals, contradictions, and scope boundaries. The
+              memory that sits under Craik so agents don't silently overwrite each
+              other's truth.
+            </p>
+            <p class="product__link">
+              <span class="product__link-label">Embedded in Craik</span>
+              <span class="product__link-arrow" aria-hidden="true">→</span>
+            </p>
+          </article>
+
+          <article class="product product--small product--upcoming" aria-label="Forthcoming work">
+            <div class="product__meta">
+              <span class="product__tag product__tag--muted">In the lab</span>
+            </div>
+            <h3>What's next</h3>
+            <p class="product__sub">Operator identity &amp; credential runtime.</p>
+            <p>
+              OIDC operator identity, credential pools with rotation and failover, RFC
+              8693 token exchange, and review gates — every provider call bound to both
+              operator and credential, named on every receipt.
+            </p>
+            <p class="product__link">
+              <span class="product__link-label">Roadmap forthcoming</span>
+              <span class="product__link-arrow" aria-hidden="true">↗</span>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ───────────── PRINCIPLES ───────────── -->
+      <section class="section principles" id="principles" aria-labelledby="principles-title">
+        <header class="section__head section__head--split">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__num">03</span> Principles</p>
+            <h2 id="principles-title">
+              How we <em>build.</em>
+            </h2>
+          </div>
+          <p class="section__sub">
+            A short list, kept honest by the work. We update it when the work proves us
+            wrong.
+          </p>
+        </header>
+
+        <ol class="principle-grid" role="list">
+          <li class="principle">
+            <p class="principle__num">01</p>
+            <h3>Memory is runtime.</h3>
+            <p>
+              If an agent's recall is a side effect of its prompt, it isn't recall —
+              it's improvisation. Memory belongs in the runtime, with structure,
+              scope, and contradiction.
+            </p>
+          </li>
+          <li class="principle">
+            <p class="principle__num">02</p>
+            <h3>Receipts before retries.</h3>
+            <p>
+              Every consequential action — provider call, write, credential use,
+              policy decision — leaves a durable, structured record. Retries without
+              receipts are just louder mistakes.
+            </p>
+          </li>
+          <li class="principle">
+            <p class="principle__num">03</p>
+            <h3>Policy is first-class.</h3>
+            <p>
+              Write authority, review gates, and approval surfaces are runtime objects,
+              not prompt suggestions. Prompts persuade; policy decides.
+            </p>
+          </li>
+          <li class="principle">
+            <p class="principle__num">04</p>
+            <h3>Runners are interchangeable.</h3>
+            <p>
+              Codex, Claude, Gemini, locals — same contracts, same handoffs. The
+              governance model outlives the model release cycle.
+            </p>
+          </li>
+          <li class="principle">
+            <p class="principle__num">05</p>
+            <h3>Handoff is the unit of work.</h3>
+            <p>
+              A run that doesn't produce a handoff the next agent can use is a run
+              that didn't finish. We design backwards from the handoff.
+            </p>
+          </li>
+          <li class="principle">
+            <p class="principle__num">06</p>
+            <h3>Build in the open.</h3>
+            <p>
+              We publish what we ship, what we know, and what we got wrong. Trust in
+              agent work is earned by showing the work.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────────── THE LAB ───────────── -->
+      <section class="section lab" id="lab" aria-labelledby="lab-title">
+        <div class="lab__inner">
+          <div class="lab__copy">
+            <p class="eyebrow"><span class="eyebrow__num">04</span> The lab</p>
+            <h2 id="lab-title">
+              A small studio, <em>building one stack carefully.</em>
+            </h2>
+            <p class="lab__lede">
+              Eidetic Labs is an independent research-and-engineering studio. We
+              prototype, ship, write up the result, and keep going. The aim is not a
+              platform-shaped product surface — it is a substrate that holds up to
+              real software work.
+            </p>
+            <div class="lab__actions">
+              <a class="button button--primary" href="mailto:hello@eidetic-labs.com">
+                hello@eidetic-labs.com
+              </a>
+              <a class="button button--ghost" href="https://github.com/eidetic-labs">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.28-5.24-5.71 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.95 10.95 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.44-2.7 5.42-5.27 5.7.41.36.78 1.07.78 2.16v3.2c0 .31.21.68.8.56 4.57-1.52 7.86-5.83 7.86-10.91C23.5 5.65 18.35.5 12 .5z" />
+                </svg>
+                github.com/eidetic-labs
+              </a>
+            </div>
+          </div>
+
+          <aside class="lab__card" aria-label="Coordinates">
+            <dl>
+              <div>
+                <dt>Name</dt><dd>Eidetic Labs</dd>
+              </div>
+              <div>
+                <dt>Pronunciation</dt><dd>/ˌaɪˈdɛt·ɪk læbz/</dd>
+              </div>
+              <div>
+                <dt>Etymology</dt><dd>Greek <em>eidos</em> — form, image, recalled.</dd>
+              </div>
+              <div>
+                <dt>Mark</dt><dd>Three rounded bars · layered memory · lavender at the core.</dd>
+              </div>
+              <div>
+                <dt>Type</dt><dd>Independent studio</dd>
+              </div>
+              <div>
+                <dt>Contact</dt><dd>hello@eidetic-labs.com</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <a class="brand brand--footer" href="/" aria-label="Eidetic Labs">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="-44 -44 88 88" width="26" height="26">
+              <rect x="-40" y="-40" width="80" height="16" rx="8" ry="8" fill="currentColor" />
+              <rect x="-40" y="-8" width="56" height="16" rx="8" ry="8" fill="#B4ACE6" />
+              <rect x="-40" y="24" width="80" height="16" rx="8" ry="8" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="brand__wordmark">Eidetic Labs</span>
+        </a>
+
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          <div>
+            <p class="site-footer__group">Products</p>
+            <a href="https://craik.eidetic-labs.com">Craik</a>
+            <a href="#products">Stigmem</a>
+          </div>
+          <div>
+            <p class="site-footer__group">Lab</p>
+            <a href="#principles">Principles</a>
+            <a href="#lab">About</a>
+            <a href="mailto:hello@eidetic-labs.com">Contact</a>
+          </div>
+          <div>
+            <p class="site-footer__group">Open</p>
+            <a href="https://github.com/eidetic-labs">GitHub</a>
+            <a href="https://github.com/eidetic-labs/craik">Craik repo</a>
+          </div>
+        </nav>
+
+        <p class="site-footer__fine">
+          <span>© 2026 Eidetic Labs.</span>
+          <span class="site-footer__sep" aria-hidden="true">·</span>
+          <span>Built in the open.</span>
+          <span class="site-footer__sep" aria-hidden="true">·</span>
+          <span>Set in Poppins.</span>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/theme.js"></script>
+  </body>
+</html>
