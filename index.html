@@ -306,6 +306,88 @@
         </ol>
       </section>
 
+      <!-- ───────────── §02 STIGMEM ───────────── -->
+      <section class="product-feature" id="stigmem" aria-labelledby="stigmem-title">
+        <figure class="product-feature__stage" aria-label="The Stigmem mark — federated memory fabric">
+          <svg viewBox="0 0 400 400" role="img" aria-labelledby="stigmem-svg-title">
+            <title id="stigmem-svg-title">Stigmem mark: lavender disc with orbiting fact tokens</title>
+            <defs>
+              <radialGradient id="stigmem-halo" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="#B4ACE6" stop-opacity="0.55" />
+                <stop offset="55%" stop-color="#B4ACE6" stop-opacity="0.10" />
+                <stop offset="100%" stop-color="#B4ACE6" stop-opacity="0" />
+              </radialGradient>
+              <pattern id="stigmem-dotgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="var(--ink-soft)" fill-opacity="0.18" />
+              </pattern>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#stigmem-dotgrid)" opacity="0.55" />
+            <circle cx="200" cy="200" r="170" class="stigmem-mark__halo" />
+            <circle cx="200" cy="200" r="155" class="stigmem-mark__orbit stigmem-mark__orbit--1" />
+            <circle cx="200" cy="200" r="115" class="stigmem-mark__orbit stigmem-mark__orbit--2" />
+
+            <!-- The disc itself — Stigmem's geometric mark -->
+            <circle cx="200" cy="200" r="64" class="stigmem-mark__disc stigmem-mark__pulse" />
+
+            <!-- Orbiting fact tokens -->
+            <g class="stigmem-mark__token" font-family="var(--font-mono)" font-size="10">
+              <g transform="translate(72 120)">
+                <rect x="-32" y="-13" width="64" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">ENTITY</text>
+              </g>
+              <g transform="translate(328 120)">
+                <rect x="-34" y="-13" width="68" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">RELATION</text>
+              </g>
+              <g transform="translate(328 280)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">VALUE</text>
+              </g>
+              <g transform="translate(72 280)">
+                <rect x="-28" y="-13" width="56" height="26" rx="5" />
+                <text y="4" text-anchor="middle" class="t-label">SCOPE</text>
+              </g>
+            </g>
+          </svg>
+        </figure>
+
+        <div class="product-feature__copy">
+          <header class="product-feature__head">
+            <p class="eyebrow"><span class="eyebrow__num">02</span> Stigmem</p>
+            <h2 id="stigmem-title">The Federated Knowledge <em>Fabric.</em></h2>
+          </header>
+          <p class="product-feature__lede">
+            A shared memory layer for AI agents. Typed, provenance-tagged
+            facts that travel across tools, platforms, and organizations.
+          </p>
+          <ul class="product-feature__features" role="list">
+            <li>Typed facts with provenance and scope</li>
+            <li>Federation under signed handshakes</li>
+            <li>Contradictions surfaced, not overwritten</li>
+            <li>Open spec + reference implementation</li>
+          </ul>
+          <div class="product-feature__actions">
+            <a class="button button--primary" href="https://stigmem.dev">
+              Visit stigmem.dev
+              <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+            <code class="install-snippet" aria-label="Install command">
+              <span class="install-snippet__prompt">$</span>
+              <span class="install-snippet__cmd">pip install stigmem</span>
+              <button type="button" class="install-snippet__copy" data-copy="pip install stigmem" aria-label="Copy install command">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                  <rect x="8" y="8" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M5 16V5a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              </button>
+            </code>
+          </div>
+          <p class="product-feature__status">preview alpha · v0.9.0a2 · Apache-2.0</p>
+        </div>
+      </section>
+
       <!-- ───────────── PRINCIPLES ───────────── -->
       <section class="section principles" id="principles" aria-labelledby="principles-title">
         <header class="section__head section__head--split">
