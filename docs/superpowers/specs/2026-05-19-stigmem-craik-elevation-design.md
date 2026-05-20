@@ -215,6 +215,14 @@ In `.site-footer__nav`, the "Products" group:
 
 Everything else in the footer unchanged.
 
+### Principles + Lab eyebrow renumbering (changed)
+
+Both existing sections keep their content and visuals. The only edit is the hardcoded `eyebrow__num` value:
+- §03 Principles → §05
+- §04 The lab → §06
+
+These match the new page outline.
+
 ## Removed from the page
 
 The following are deleted (their content distributes into §02, §03, §04):
