@@ -1244,6 +1244,63 @@ html[data-theme='dark'] .product-feature__stage svg {
   margin: clamp(36px, 4vw, 56px) 0;
 }
 
+/* ───────── Terminal artifact (used by §04 Composition) ───────── */
+.terminal {
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 90px rgba(10, 10, 10, 0.18);
+  color: #f5f3ff;
+  overflow: hidden;
+}
+html[data-theme='dark'] .terminal {
+  background: #0a0a0e;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.terminal__chrome {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+}
+.terminal__dot {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+}
+.terminal__dot--r { background: #ff5f57; }
+.terminal__dot--y { background: #febc2e; }
+.terminal__dot--g { background: #28c840; }
+.terminal__path {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  margin-left: 14px;
+}
+.terminal__body {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  padding: 22px 24px 28px;
+}
+.terminal__body p { margin: 0; }
+.terminal__body .prompt {
+  color: var(--lavender);
+  margin-right: 8px;
+}
+.terminal__body .comment {
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 8px;
+  padding-left: 22px;
+}
+.terminal__body .terminal__arg {
+  color: #f5f3ff;
+}
+
 /* In-terminal mark utilities (§04 trace highlights) */
 .terminal__body .mark-r {
   background: rgba(239, 106, 106, 0.18);

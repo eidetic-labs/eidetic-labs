@@ -491,11 +491,11 @@
             <span class="terminal__path">~/repos/product · main</span>
           </header>
           <div class="terminal__body">
-            <p><span class="prompt">$</span> stigmem assert <span class="install-snippet__cmd">migration_0042.row_count</span> = 12M</p>
+            <p><span class="prompt">$</span> stigmem assert <span class="terminal__arg">migration_0042.row_count</span> = 12M</p>
             <p class="comment">→ fact_8a · signed · scope=team-dba</p>
-            <p><span class="prompt">$</span> craik case build <span class="install-snippet__cmd">task_042</span></p>
+            <p><span class="prompt">$</span> craik case build <span class="terminal__arg">task_042</span></p>
             <p class="comment">→ pulls fact_8a · 12 evidence refs</p>
-            <p><span class="prompt">$</span> craik run <span class="install-snippet__cmd">task_042</span> --policy strict.write</p>
+            <p><span class="prompt">$</span> craik run <span class="terminal__arg">task_042</span> --policy strict.write</p>
             <p class="comment">→ <span class="mark-r">contradiction</span>: stigmem fact_91 differs</p>
             <p class="comment">→ surfaced to <span class="mark-l">reviewer:@dba</span></p>
           </div>
