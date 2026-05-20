@@ -1103,6 +1103,157 @@ html[data-theme='dark'] .premise__quote-mark {
 }
 .site-footer__sep { color: var(--rule-strong); }
 
+/* ───────── Product features (§02 Stigmem, §03 Craik) ───────── */
+.product-feature {
+  align-items: center;
+  display: grid;
+  gap: clamp(40px, 6vw, 80px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  margin: 0 auto;
+  max-width: var(--max);
+  padding: clamp(80px, 10vw, 144px) var(--gutter);
+  position: relative;
+}
+.product-feature--reverse {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+}
+.product-feature--reverse .product-feature__copy { order: 1; }
+.product-feature--reverse .product-feature__stage { order: 2; }
+.product-feature:not(.product-feature--reverse) .product-feature__stage { order: 1; }
+.product-feature:not(.product-feature--reverse) .product-feature__copy { order: 2; }
+
+.product-feature__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 56ch;
+}
+.product-feature__head h2 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-top: 14px;
+}
+.product-feature__lede {
+  color: var(--fg-dim);
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+.product-feature__features {
+  border-top: 1px solid var(--rule);
+  display: grid;
+  gap: 10px 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 22px 0 0;
+}
+.product-feature__features li {
+  align-items: center;
+  color: var(--fg);
+  display: flex;
+  font-size: 0.94rem;
+  gap: 10px;
+}
+.product-feature__features li::before {
+  color: var(--accent);
+  content: '◦';
+  font-weight: 700;
+}
+.product-feature__actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.product-feature__status {
+  color: var(--fg-mute);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.product-feature__stage {
+  aspect-ratio: 1;
+  justify-self: center;
+  max-width: min(420px, 42vw);
+  position: relative;
+  width: 100%;
+}
+.product-feature__stage svg {
+  filter: drop-shadow(0 30px 60px rgba(10, 10, 10, 0.08));
+  height: 100%;
+  width: 100%;
+}
+html[data-theme='dark'] .product-feature__stage svg {
+  filter: drop-shadow(0 30px 60px rgba(124, 114, 199, 0.18));
+}
+
+/* Stigmem visual: lavender disc + faint orbit dots */
+.stigmem-mark__disc { fill: #B4ACE6; }
+.stigmem-mark__halo  { fill: url(#stigmem-halo); }
+.stigmem-mark__orbit { fill: none; stroke: var(--accent); stroke-opacity: 0.18; stroke-dasharray: 2 6; transform-origin: 200px 200px; }
+.stigmem-mark__orbit--1 { animation: spin 80s linear infinite; }
+.stigmem-mark__orbit--2 { animation: spin 120s linear infinite reverse; }
+.stigmem-mark__token rect { fill: var(--bg); stroke: var(--rule-strong); stroke-width: 1; }
+.stigmem-mark__token text { fill: var(--fg); }
+.stigmem-mark__token .t-label { font-weight: 600; letter-spacing: 0.06em; }
+.stigmem-mark__pulse {
+  animation: dotPulse 3.2s var(--ease) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Craik visual: open C arc + lavender dot + orbital node chips */
+.craik-mark__arc  { fill: none; stroke: var(--mark-fill); stroke-width: 22; stroke-linecap: round; }
+.craik-mark__dot  { fill: #B4ACE6; }
+.craik-mark__halo { fill: url(#craik-halo); }
+.craik-mark__orbit { fill: none; stroke: var(--accent); stroke-opacity: 0.18; stroke-dasharray: 2 6; transform-origin: 200px 200px; }
+.craik-mark__orbit--1 { animation: spin 110s linear infinite; }
+.craik-mark__node rect { fill: var(--bg); stroke: var(--rule-strong); stroke-width: 1; }
+.craik-mark__node text { fill: var(--fg); }
+.craik-mark__node .n-label { font-weight: 600; letter-spacing: 0.06em; }
+.craik-mark__pulse {
+  animation: dotPulse 2.6s var(--ease) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ───────── Composition (§04) ───────── */
+.composition__head {
+  margin-inline: auto;
+  max-width: 760px;
+  text-align: center;
+}
+.composition__head .eyebrow { margin-inline: auto; }
+.composition__framing,
+.composition__resolution {
+  color: var(--fg-dim);
+  font-size: 1.06rem;
+  line-height: 1.75;
+  margin: clamp(28px, 3vw, 40px) auto 0;
+  max-width: 62ch;
+}
+.composition__terminal {
+  margin: clamp(36px, 4vw, 56px) 0;
+}
+
+/* In-terminal mark utilities (§04 trace highlights) */
+.terminal__body .mark-r {
+  background: rgba(239, 106, 106, 0.18);
+  border-radius: 3px;
+  color: #ff9b9b;
+  padding: 1px 5px;
+}
+.terminal__body .mark-l {
+  background: rgba(180, 172, 230, 0.22);
+  border-radius: 3px;
+  color: var(--lavender);
+  padding: 1px 5px;
+}
+
 /* ───────── Responsive ───────── */
 @media (max-width: 1100px) {
   .hero {
