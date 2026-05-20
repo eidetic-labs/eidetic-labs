@@ -1167,6 +1167,20 @@ html[data-theme='dark'] .terminal {
   .hero__stage { justify-self: center; max-width: 520px; }
   .lab__inner { grid-template-columns: minmax(0, 1fr); }
   .principle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product-feature,
+  .product-feature--reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .product-feature .product-feature__stage,
+  .product-feature--reverse .product-feature__stage {
+    order: 1;
+    max-width: min(360px, 70vw);
+    margin-bottom: 8px;
+  }
+  .product-feature .product-feature__copy,
+  .product-feature--reverse .product-feature__copy {
+    order: 2;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1193,6 +1207,7 @@ html[data-theme='dark'] .terminal {
   .premise__ledger-to { grid-area: to; }
 
   .principle-grid { grid-template-columns: minmax(0, 1fr); }
+  .product-feature__features { grid-template-columns: minmax(0, 1fr); }
 
   .site-footer__inner { grid-template-columns: minmax(0, 1fr); }
   .site-footer__nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
